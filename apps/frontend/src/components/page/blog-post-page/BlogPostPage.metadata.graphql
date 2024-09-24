@@ -16,7 +16,6 @@ query getBlogPostPageMetaData($key: String!, $version: String, $locale: [Locales
         locale
       }
       Heading
-      randomText
       BlogPostPromoImage {
         ...ReferenceData
       }

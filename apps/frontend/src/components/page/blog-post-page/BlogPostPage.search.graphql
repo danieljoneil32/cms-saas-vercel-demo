@@ -1,6 +1,5 @@
 fragment BlogPostPageSearchResult on BlogPostPage {
     title: Heading
-    randomtext: randomText
     image: BlogPostPromoImage {
         ...ReferenceData
     }

@@ -22,7 +22,7 @@ import { localeToGraphLocale } from "@remkoj/optimizely-graph-client";
 
 export const BlogPostPage: OptimizelyNextPage<BlogPostPageDataFragment> = ({
   contentLink,
-  data: { blogTitle: title, blogImage: image, blogBody: description, blogAuthor: author, blogSubtitle: subtitle, RandomText: randomtext },
+  data: { blogTitle: title, blogImage: image, blogBody: description, blogAuthor: author, blogSubtitle: subtitle },
 }) => {
 
   const { factory } = getServerContext()
@@ -37,9 +37,7 @@ export const BlogPostPage: OptimizelyNextPage<BlogPostPageDataFragment> = ({
               <CmsEditable cmsFieldName="Heading" as="h1" className="mb-[24px] text-[48px]">{ title ?? "" }</CmsEditable>
               <CmsEditable cmsFieldName="ArticleAuthor" as="p" className="text-people-eater my-[24px] text-[24px]">{ author ?? "" }</CmsEditable>
               <CmsEditable cmsFieldName="ArticleSubHeading" as="p" className="text-[30px] leading-[36px] mt-[24px] mb-20">{ subtitle ?? "" }</CmsEditable>
-              <h2>{randomtext ?? ""}</h2>
               <CmsEditable cmsFieldName="BlogPostBody" as={ RichText } text={ description?.json } factory={ factory } />
-
               <div className="col-span-12 lg:col-span-10 lg:col-start-2 mx-auto border-t-2 my-64"></div>
             </div>
           </section>

@@ -8,5 +8,4 @@ fragment BlogPostPageData on BlogPostPage {
         json
     }
     blogAuthor: ArticleAuthor
-    RandomText: randomText
 }
