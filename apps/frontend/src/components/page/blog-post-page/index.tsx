@@ -22,7 +22,7 @@ import { localeToGraphLocale } from "@remkoj/optimizely-graph-client";
 
 export const BlogPostPage: OptimizelyNextPage<BlogPostPageDataFragment> = ({
   contentLink,
-  data: { blogTitle: title, blogImage: image, blogBody: description, blogAuthor: author, blogSubtitle: subtitle },
+  data: { blogTitle: title, blogImage: image, blogBody: description, blogAuthor: author, blogSubtitle: subtitle, blogTag: tag },
 }) => {
 
   const { factory } = getServerContext()
@@ -34,6 +34,7 @@ export const BlogPostPage: OptimizelyNextPage<BlogPostPageDataFragment> = ({
           { image && <CmsEditable cmsFieldName="BlogPostPromoImage" as={ Image } className="col-span-12 rounded-[40px] mt-16 lg:mt-32 mb-24 lg:mb-48 mx-auto" src={image} alt="" width={1920} height={1080} /> }
           <section className="col-span-12 lg:col-span-10 lg:col-start-2 mx-auto">
             <div className="prose max-w-[960px] prose-h2:text-[36px] prose-h2:leading-[40px] prose-h2:mb-[24px] prose-h2:mt-[48px] prose-a:text-azure prose-a:font-bold prose-a:no-underline hover:prose-a:underline focus:prose-a:underline prose-img:rounded-[40px] prose-img:p-[20px] prose-img:border-2">
+              <div>{tag}</div>
               <CmsEditable cmsFieldName="Heading" as="h1" className="mb-[24px] text-[48px]">{ title ?? "" }</CmsEditable>
               <CmsEditable cmsFieldName="ArticleAuthor" as="p" className="text-people-eater my-[24px] text-[24px]">{ author ?? "" }</CmsEditable>
               <CmsEditable cmsFieldName="ArticleSubHeading" as="p" className="text-[30px] leading-[36px] mt-[24px] mb-20">{ subtitle ?? "" }</CmsEditable>

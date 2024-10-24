@@ -1,0 +1,4 @@
+fragment HeroElementData on HeroElement {
+  imageLink { ...ReferenceData }
+  overlayText
+}

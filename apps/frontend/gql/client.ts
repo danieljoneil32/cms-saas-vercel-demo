@@ -2,21 +2,58 @@ import type * as Schema from "./graphql";
 import type { GraphQLClient, RequestOptions } from 'graphql-request';
 import gql from 'graphql-tag';
 type GraphQLClientRequestHeaders = RequestOptions['requestHeaders'];
+<<<<<<< HEAD
 export const LinkDataFragmentDoc = gql`
+=======
+export const HtmlBlockFragmentDoc = /*#__PURE__*/ gql`
+    fragment HtmlBlock on HtmlBlock {
+  title: HtmlBlockHeading
+  content: HtmlContent {
+    json
+    html
+  }
+  __typename
+}
+    `;
+export const LinkDataFragmentDoc = /*#__PURE__*/ gql`
+>>>>>>> 08eb2a8 (updates with hero)
     fragment LinkData on ContentUrl {
   base
   hierarchical
   default
 }
     `;
+<<<<<<< HEAD
 export const ReferenceDataFragmentDoc = gql`
     fragment ReferenceData on ContentReference {
   key
+=======
+export const FooterMenuNavigationItemFragmentDoc = /*#__PURE__*/ gql`
+    fragment FooterMenuNavigationItem on MenuNavigationBlock {
+  title: MenuNavigationHeading
+  items: NavigationLinks {
+    url {
+      ...LinkData
+    }
+    title
+    target
+    text
+  }
+  __typename
+}
+    `;
+export const LinkItemDataFragmentDoc = /*#__PURE__*/ gql`
+    fragment LinkItemData on Link {
+  title
+  text
+  target
+>>>>>>> 08eb2a8 (updates with hero)
   url {
     ...LinkData
   }
 }
     `;
+<<<<<<< HEAD
 export const PageSeoSettingsPropertyDataFragmentDoc = gql`
     fragment PageSeoSettingsPropertyData on PageSeoSettingsProperty {
   MetaTitle
@@ -28,6 +65,67 @@ export const PageSeoSettingsPropertyDataFragmentDoc = gql`
 }
     `;
 export const IContentInfoFragmentDoc = gql`
+=======
+export const MenuNavigationItemFragmentDoc = /*#__PURE__*/ gql`
+    fragment MenuNavigationItem on MenuNavigationBlock {
+  title: MenuNavigationHeading
+  items: NavigationLinks {
+    ...LinkItemData
+  }
+  __typename
+}
+    `;
+export const MenuCardItemFragmentDoc = /*#__PURE__*/ gql`
+    fragment MenuCardItem on CardBlock {
+  heading: CardHeading
+  subheading: CardSubHeading
+  description: CardDescription {
+    json
+  }
+  color: CardColor
+  image: CardImage {
+    src: url {
+      ...LinkData
+    }
+  }
+  link: CardButton {
+    title: ButtonText
+    url: ButtonUrl {
+      ...LinkData
+    }
+  }
+  __typename
+}
+    `;
+export const MenuButtonFragmentDoc = /*#__PURE__*/ gql`
+    fragment MenuButton on ButtonBlock {
+  text: ButtonText
+  url: ButtonUrl {
+    ...LinkData
+  }
+  type: ButtonType
+  variant: ButtonVariant
+  __typename
+}
+    `;
+export const MenuItemFragmentDoc = /*#__PURE__*/ gql`
+    fragment MenuItem on _IContent {
+  __typename
+  ...MenuNavigationItem
+  ...MenuCardItem
+  ...MenuButton
+}
+    `;
+export const MegaMenuItemFragmentDoc = /*#__PURE__*/ gql`
+    fragment MegaMenuItem on MegaMenuGroupBlock {
+  menuName: MenuMenuHeading
+  menuData: MegaMenuContentArea {
+    ...MenuItem
+  }
+}
+    `;
+export const IContentInfoFragmentDoc = /*#__PURE__*/ gql`
+>>>>>>> 08eb2a8 (updates with hero)
     fragment IContentInfo on IContentMetadata {
   key
   locale
@@ -39,7 +137,71 @@ export const IContentInfoFragmentDoc = gql`
   }
 }
     `;
+<<<<<<< HEAD
 export const IElementDataFragmentDoc = gql`
+=======
+export const IContentDataFragmentDoc = /*#__PURE__*/ gql`
+    fragment IContentData on _IContent {
+  _metadata {
+    ...IContentInfo
+  }
+  _type: __typename
+}
+    `;
+export const ReferenceDataFragmentDoc = /*#__PURE__*/ gql`
+    fragment ReferenceData on ContentReference {
+  key
+  url {
+    ...LinkData
+  }
+}
+    `;
+export const BlogPostPageSearchResultFragmentDoc = /*#__PURE__*/ gql`
+    fragment BlogPostPageSearchResult on BlogPostPage {
+  title: Heading
+  image: BlogPostPromoImage {
+    ...ReferenceData
+  }
+  author: ArticleAuthor
+  seodata: SeoSettings {
+    MetaTitle
+    MetaDescription
+  }
+  _metadata {
+    published
+  }
+}
+    `;
+export const StartPageSearchDataFragmentDoc = /*#__PURE__*/ gql`
+    fragment StartPageSearchData on StartPage {
+  seodata: SeoSettings {
+    MetaTitle
+    MetaDescription
+    SharingImage {
+      ...ReferenceData
+    }
+  }
+}
+    `;
+export const SearchDataFragmentDoc = /*#__PURE__*/ gql`
+    fragment SearchData on _IContent {
+  ...IContentData
+  ...BlogPostPageSearchResult
+  ...StartPageSearchData
+}
+    `;
+export const PageSeoSettingsPropertyDataFragmentDoc = /*#__PURE__*/ gql`
+    fragment PageSeoSettingsPropertyData on PageSeoSettingsProperty {
+  MetaTitle
+  MetaDescription
+  SharingImage {
+    ...ReferenceData
+  }
+  GraphType
+}
+    `;
+export const IElementDataFragmentDoc = /*#__PURE__*/ gql`
+>>>>>>> 08eb2a8 (updates with hero)
     fragment IElementData on _IElement {
   _metadata {
     ...IContentInfo
@@ -161,12 +323,27 @@ export const BlankExperienceDataFragmentDoc = gql`
   ...ExperienceData
 }
     `;
+<<<<<<< HEAD
 export const IContentDataFragmentDoc = gql`
     fragment IContentData on _IContent {
   _metadata {
     ...IContentInfo
   }
   _type: __typename
+=======
+export const BlogPostPageDataFragmentDoc = /*#__PURE__*/ gql`
+    fragment BlogPostPageData on BlogPostPage {
+  blogTitle: Heading
+  blogSubtitle: ArticleSubHeading
+  blogImage: BlogPostPromoImage {
+    ...ReferenceData
+  }
+  blogBody: BlogPostBody {
+    json
+  }
+  blogAuthor: ArticleAuthor
+  blogTag: Tag
+>>>>>>> 08eb2a8 (updates with hero)
 }
     `;
 export const BlockDataFragmentDoc = gql`
@@ -384,6 +561,7 @@ export const StartPageDataFragmentDoc = gql`
   }
 }
     `;
+<<<<<<< HEAD
 export const StartPageSearchDataFragmentDoc = gql`
     fragment StartPageSearchData on StartPage {
   seodata: SeoSettings {
@@ -574,6 +752,37 @@ export const PageDataFragmentDoc = gql`
     `;
 export const getArticleListElementItemsDocument = gql`
     query getArticleListElementItems($count: Int!, $locale: [Locales]) {
+=======
+export const PageDataFragmentDoc = /*#__PURE__*/ gql`
+    fragment PageData on _IContent {
+  ...IContentData
+  ...BlankExperienceData
+  ...BlogPostPageData
+  ...BlogPostPageSearchResult
+  ...LandingPageData
+  ...StandardPageData
+  ...StartPageData
+  ...StartPageSearchData
+}
+    `;
+export const getContentTypeDocument = /*#__PURE__*/ gql`
+    query getContentType($key: String!, $version: String, $locale: [Locales!], $path: String, $domain: String) {
+  content: _Content(
+    where: {_or: [{_metadata: {key: {eq: $key}, version: {eq: $version}}}, {_metadata: {url: {hierarchical: {eq: $path}, base: {eq: $domain}}, version: {eq: $version}}}]}
+    locale: $locale
+  ) {
+    total
+    items {
+      _metadata {
+        types
+      }
+    }
+  }
+}
+    `;
+export const getArticleListElementItemsDocument = /*#__PURE__*/ gql`
+    query getArticleListElementItems($count: Int, $locale: [Locales]) {
+>>>>>>> 08eb2a8 (updates with hero)
   BlogPostPage(
     orderBy: {_metadata: {published: DESC}}
     limit: $count
@@ -866,8 +1075,13 @@ ${IContentInfoFragmentDoc}
 ${LinkDataFragmentDoc}
 ${StartPageSearchDataFragmentDoc}
 ${ReferenceDataFragmentDoc}
+<<<<<<< HEAD
 ${BlogPostPageSearchResultFragmentDoc}`;
 export const getContentByIdDocument = gql`
+=======
+${StartPageSearchDataFragmentDoc}`;
+export const getContentByIdDocument = /*#__PURE__*/ gql`
+>>>>>>> 08eb2a8 (updates with hero)
     query getContentById($key: String!, $version: String, $locale: [Locales!], $path: String, $domain: String) {
   content: _Content(
     where: {_or: [{_metadata: {key: {eq: $key}, version: {eq: $version}}}, {_metadata: {url: {hierarchical: {eq: $path}, base: {eq: $domain}}, version: {eq: $version}}}]}
@@ -877,6 +1091,7 @@ export const getContentByIdDocument = gql`
     items {
       ...BlockData
       ...PageData
+<<<<<<< HEAD
       ...BlogListingBlockData
       ...CardBlockData
       ...CarouselBlockData
@@ -895,6 +1110,8 @@ export const getContentByIdDocument = gql`
       ...BlogPostPageSearchResult
       ...LandingPageData
       ...StandardPageData
+=======
+>>>>>>> 08eb2a8 (updates with hero)
     }
   }
 }
@@ -902,12 +1119,16 @@ export const getContentByIdDocument = gql`
 ${IContentDataFragmentDoc}
 ${IContentInfoFragmentDoc}
 ${LinkDataFragmentDoc}
+<<<<<<< HEAD
 ${PageDataFragmentDoc}
+=======
+>>>>>>> 08eb2a8 (updates with hero)
 ${BlogListingBlockDataFragmentDoc}
 ${CardBlockDataFragmentDoc}
 ${ReferenceDataFragmentDoc}
 ${CarouselBlockDataFragmentDoc}
 ${IContentListItemFragmentDoc}
+<<<<<<< HEAD
 ${OdpEmbedBlockDataFragmentDoc}
 ${QuoteBlockDataFragmentDoc}
 ${TextBlockDataFragmentDoc}
@@ -918,6 +1139,17 @@ ${ButtonBlockPropertyDataFragmentDoc}
 ${HomePageHeroBlockDataFragmentDoc}
 ${LayoutContainerBlockDataFragmentDoc}
 ${BlankSectionDataFragmentDoc}
+=======
+${LayoutContainerBlockDataFragmentDoc}
+${HomeHeroBlockDataFragmentDoc}
+${HeroBlockDataFragmentDoc}
+${OdpEmbedBlockDataFragmentDoc}
+${QuoteBlockDataFragmentDoc}
+${TextBlockDataFragmentDoc}
+${ContentRecsBlockDataFragmentDoc}
+${BlankSectionDataFragmentDoc}
+${PageDataFragmentDoc}
+>>>>>>> 08eb2a8 (updates with hero)
 ${BlankExperienceDataFragmentDoc}
 ${PageSeoSettingsPropertyDataFragmentDoc}
 ${ExperienceDataFragmentDoc}
@@ -931,6 +1163,7 @@ ${HeadingElementDataFragmentDoc}
 ${ImageElementDataFragmentDoc}
 ${ParagraphElementDataFragmentDoc}
 ${TestimonialElementDataFragmentDoc}
+<<<<<<< HEAD
 ${VideoElementDataFragmentDoc}
 ${StartPageDataFragmentDoc}
 ${BlogPostPageDataFragmentDoc}
@@ -938,6 +1171,15 @@ ${BlogPostPageSearchResultFragmentDoc}
 ${LandingPageDataFragmentDoc}
 ${StandardPageDataFragmentDoc}`;
 export const getContentByPathDocument = gql`
+=======
+${BlogPostPageDataFragmentDoc}
+${BlogPostPageSearchResultFragmentDoc}
+${LandingPageDataFragmentDoc}
+${StandardPageDataFragmentDoc}
+${StartPageDataFragmentDoc}
+${StartPageSearchDataFragmentDoc}`;
+export const getContentByPathDocument = /*#__PURE__*/ gql`
+>>>>>>> 08eb2a8 (updates with hero)
     query getContentByPath($path: String!, $version: String, $locale: [Locales!], $domain: String) {
   content: _Content(
     where: {_metadata: {url: {default: {eq: $path}, base: {eq: $domain}}, version: {eq: $version}}}
@@ -946,12 +1188,15 @@ export const getContentByPathDocument = gql`
     total
     items {
       ...PageData
+<<<<<<< HEAD
       ...BlankExperienceData
       ...StartPageData
       ...BlogPostPageData
       ...BlogPostPageSearchResult
       ...LandingPageData
       ...StandardPageData
+=======
+>>>>>>> 08eb2a8 (updates with hero)
     }
   }
 }
@@ -973,13 +1218,20 @@ ${HeadingElementDataFragmentDoc}
 ${ImageElementDataFragmentDoc}
 ${ParagraphElementDataFragmentDoc}
 ${TestimonialElementDataFragmentDoc}
+<<<<<<< HEAD
 ${VideoElementDataFragmentDoc}
 ${StartPageDataFragmentDoc}
+=======
+${BlogPostPageDataFragmentDoc}
+${BlogPostPageSearchResultFragmentDoc}
+${LandingPageDataFragmentDoc}
+>>>>>>> 08eb2a8 (updates with hero)
 ${BlockDataFragmentDoc}
 ${BlogListingBlockDataFragmentDoc}
 ${CardBlockDataFragmentDoc}
 ${CarouselBlockDataFragmentDoc}
 ${IContentListItemFragmentDoc}
+<<<<<<< HEAD
 ${OdpEmbedBlockDataFragmentDoc}
 ${QuoteBlockDataFragmentDoc}
 ${TextBlockDataFragmentDoc}
@@ -1009,6 +1261,19 @@ export const getContentTypeDocument = gql`
   }
 }
     `;
+=======
+${LayoutContainerBlockDataFragmentDoc}
+${HomeHeroBlockDataFragmentDoc}
+${HeroBlockDataFragmentDoc}
+${OdpEmbedBlockDataFragmentDoc}
+${QuoteBlockDataFragmentDoc}
+${TextBlockDataFragmentDoc}
+${ContentRecsBlockDataFragmentDoc}
+${BlankSectionDataFragmentDoc}
+${StandardPageDataFragmentDoc}
+${StartPageDataFragmentDoc}
+${StartPageSearchDataFragmentDoc}`;
+>>>>>>> 08eb2a8 (updates with hero)
 
 export type SdkFunctionWrapper = <T>(action: (requestHeaders?:Record<string, string>) => Promise<T>, operationName: string, operationType?: string, variables?: any) => Promise<T>;
 
@@ -1017,7 +1282,14 @@ const defaultWrapper: SdkFunctionWrapper = (action, _operationName, _operationTy
 
 export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = defaultWrapper) {
   return {
+<<<<<<< HEAD
     getArticleListElementItems(variables: Schema.getArticleListElementItemsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<Schema.getArticleListElementItemsQuery> {
+=======
+    getContentType(variables: Schema.getContentTypeQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<Schema.getContentTypeQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<Schema.getContentTypeQuery>(getContentTypeDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getContentType', 'query', variables);
+    },
+    getArticleListElementItems(variables?: Schema.getArticleListElementItemsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<Schema.getArticleListElementItemsQuery> {
+>>>>>>> 08eb2a8 (updates with hero)
       return withWrapper((wrappedRequestHeaders) => client.request<Schema.getArticleListElementItemsQuery>(getArticleListElementItemsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getArticleListElementItems', 'query', variables);
     },
     getBlankExperienceMetaData(variables: Schema.getBlankExperienceMetaDataQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<Schema.getBlankExperienceMetaDataQuery> {
@@ -1052,9 +1324,12 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     getContentByPath(variables: Schema.getContentByPathQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<Schema.getContentByPathQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<Schema.getContentByPathQuery>(getContentByPathDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getContentByPath', 'query', variables);
+<<<<<<< HEAD
     },
     getContentType(variables: Schema.getContentTypeQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<Schema.getContentTypeQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<Schema.getContentTypeQuery>(getContentTypeDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getContentType', 'query', variables);
+=======
+>>>>>>> 08eb2a8 (updates with hero)
     }
   };
 }
