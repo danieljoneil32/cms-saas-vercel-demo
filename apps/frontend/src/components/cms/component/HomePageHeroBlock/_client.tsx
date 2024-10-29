@@ -30,7 +30,6 @@ const HomeHero: HomeHeroBlockComponentType = ({
 
   return (
     <section className="py-20 lg:py-40 w-full overflow-hidden relative outer-padding">
-      <h3>Hello!</h3>
       <div className="container mx-auto text-center flex flex-col items-center max-w-[580px] relative z-10 pt-[40px]">
         {leftImageUrl && (
           <motion.div
