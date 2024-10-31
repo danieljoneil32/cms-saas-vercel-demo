@@ -71,6 +71,11 @@ export const ContentRecsElementDataFragmentDoc = gql`
   ElementRecommendationCount
 }
     `;
+export const CustomHeadingDataFragmentDoc = gql`
+    fragment CustomHeadingData on CustomHeading {
+  title
+}
+    `;
 export const HeadingElementDataFragmentDoc = gql`
     fragment HeadingElementData on HeadingElement {
   headingText
@@ -138,6 +143,7 @@ export const CompositionDataFragmentDoc = gql`
       ...ArticleListElementData
       ...CTAElementData
       ...ContentRecsElementData
+      ...CustomHeadingData
       ...HeadingElementData
       ...ImageElementData
       ...ParagraphElementData
@@ -927,6 +933,7 @@ ${IElementDataFragmentDoc}
 ${ArticleListElementDataFragmentDoc}
 ${CTAElementDataFragmentDoc}
 ${ContentRecsElementDataFragmentDoc}
+${CustomHeadingDataFragmentDoc}
 ${HeadingElementDataFragmentDoc}
 ${ImageElementDataFragmentDoc}
 ${ParagraphElementDataFragmentDoc}
@@ -967,6 +974,7 @@ ${IElementDataFragmentDoc}
 ${ArticleListElementDataFragmentDoc}
 ${CTAElementDataFragmentDoc}
 ${ContentRecsElementDataFragmentDoc}
+${CustomHeadingDataFragmentDoc}
 ${HeadingElementDataFragmentDoc}
 ${ImageElementDataFragmentDoc}
 ${ParagraphElementDataFragmentDoc}

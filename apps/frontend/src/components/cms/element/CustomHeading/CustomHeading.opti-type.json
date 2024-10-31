@@ -1,0 +1,35 @@
+{
+  "key": "CustomHeading",
+  "displayName": "Custom Heading",
+  "description": "",
+  "baseType": "element",
+  "source": "",
+  "sortOrder": 0,
+  "features": [
+    "localization",
+    "versioning",
+    "publishPeriod"
+  ],
+  "usage": [
+    "property",
+    "instance"
+  ],
+  "mayContainTypes": [],
+  "mediaFileExtensions": [],
+  "created": "2024-10-30T14:46:28.1956764+00:00",
+  "lastModified": "2024-10-30T14:46:59.2229058+00:00",
+  "lastModifiedBy": "dan.oneil@optimizely.com",
+  "properties": {
+    "title": {
+      "type": "string",
+      "format": "shortString",
+      "displayName": "Title",
+      "description": "",
+      "localized": false,
+      "required": false,
+      "group": "Information",
+      "sortOrder": 0,
+      "editorSettings": {}
+    }
+  }
+}

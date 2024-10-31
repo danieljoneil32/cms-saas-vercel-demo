@@ -1,0 +1,3 @@
+fragment CustomHeadingData on CustomHeading {
+  title
+}
