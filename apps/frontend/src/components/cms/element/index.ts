@@ -25,10 +25,6 @@ export const elementDictionary : ComponentTypeDictionary = [
         component: ContentRecsElementComponent 
     },
     { 
-        type: "CustomHeading", 
-        component: CustomHeadingComponent 
-    },
-    { 
         type: "HeadingElement", 
         component: HeadingElementComponent 
     },

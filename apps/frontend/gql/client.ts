@@ -74,6 +74,9 @@ export const ContentRecsElementDataFragmentDoc = gql`
 export const CustomHeadingDataFragmentDoc = gql`
     fragment CustomHeadingData on CustomHeading {
   title
+  imageLink {
+    ...ReferenceData
+  }
 }
     `;
 export const HeadingElementDataFragmentDoc = gql`
