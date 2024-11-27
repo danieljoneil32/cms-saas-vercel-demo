@@ -3,7 +3,6 @@ import { ComponentTypeDictionary } from "@remkoj/optimizely-cms-react";
 import ArticleListElementComponent from "./ArticleListElement";
 import CTAElementComponent from "./CTAElement";
 import ContentRecsElementComponent from "./ContentRecsElement";
-import CustomHeadingComponent from "./CustomHeading";
 import HeadingElementComponent from "./HeadingElement";
 import ImageElementComponent from "./ImageElement";
 import ParagraphElementComponent from "./ParagraphElement";
