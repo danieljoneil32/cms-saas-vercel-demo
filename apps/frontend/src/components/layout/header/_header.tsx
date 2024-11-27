@@ -75,7 +75,7 @@ export const Header : FunctionComponent<ClientHeaderProps> = ({ menuItems, utili
         onBlur={handleFocusLeave}
       >
         <div className="py-8 container mx-auto flex items-center w-full justify-between lg:justify-normal">
-          <Logo ref={logoRef} logo="https://app-ocstdano202835irt001.cms.optimizely.com/globalassets/bnsf/train-front.jpeg" />
+          <Logo ref={logoRef} logo={ logo } />
 
           <div className="lg:hidden">
             
